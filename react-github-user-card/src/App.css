@@ -2,8 +2,12 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.App>h1 {
+  margin: 2%;
+}
+
+.App>h3 {
+  margin: 2%;
 }
 
 .App {
@@ -14,29 +18,28 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #f88020;
   flex-wrap: wrap;
-}
-
-.App-link {
-  color: #09d3ac;
 }
 
 .card {
   border: dotted 2px #fff4e4;
   margin: 2%;
-  width: 40%;
+  width: 30%;
   height: auto;
+  overflow: hidden;
 }
 
 .card img {
   width: 50%;
   padding: 3%;
+  margin: 5%;
   border-radius: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.548), 0 6px 20px 0 rgba(0, 0, 0, 0.698);
 }
 
 .followers {
-  color: #fff4e4;
+  color: #f88020;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -46,22 +49,27 @@
   background-color: #d1274b;
   border-radius: 20px;
   text-decoration: none;
-  color: #f88020;
+  color: #fff4e4;
   font-size: 0.8rem;
-  padding: 1%;
+  padding: 1.5%;
 
 }
 
 .followers p {
-  margin: 4%;
+  margin: 3%;
 
 }
 
 input {
   background-color: #282c34;
-  color: #e3e7f1;
+  color: #fff4e4;
+  width: 40%;
 }
 
-.card-info .user-blog p a {
-  width: 100%;
+.card-info .name {
+  margin: 2%;
+}
+
+.card-info {
+  width: 90%;
 }
