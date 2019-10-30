@@ -67,6 +67,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Hello People</h1>
+        <h3>Search Below 🔽</h3>
         <input
           type="text"
           value={this.state.userText}
@@ -76,9 +77,7 @@ class App extends React.Component {
         {this.state.user.length === 0 && <p>Loading profile...</p>}
         <div className="followers">
 
-          <UserCard user={this.state.user}>
-
-          </UserCard>
+          <UserCard user={this.state.user}></UserCard>
 
           {this.state.followers.filter((user) => {
             return user.login.toLowerCase().includes(this.state.userText.toLowerCase());
