@@ -14,20 +14,35 @@ class App extends React.Component {
     axios
       .get('https://api.github.com/users/AMC-ai')
       .then(res => {
-        console.log(res)
+        console.log('ai profile', res)
         this.setState({
           user: res.data
         });
       })
       .catch(err => console.log(err));
 
+    const followersPromises = [];
 
     axios
       .get(`https://api.github.com/users/AMC-ai/followers`)
-      .then(res => {
-        console.log(res.data)
+      .then(async (res) => {
+        console.log('followers', res.data)
+        res.data.forEach((githubUser) => {
+          followersPromises.push(axios.get(githubUser.url))
+          const userRes = axios.get(githubUser.url);
+          // console.log('follower profile', userRes)
+
+        })
+
+        const follow = await Promise.all(followersPromises);
+
+        console.log(follow)
+        const filteredUsers = follow.map((user) => user.data);
+
+        console.log(filteredUsers)
+
         this.setState({
-          followers: res.data
+          followers: filteredUsers
         });
       })
       .catch(err => console.log(err));
@@ -73,12 +88,10 @@ class App extends React.Component {
           value={this.state.userText}
           onChange={this.handleChanges}
         />
-
         {this.state.user.length === 0 && <p>Loading profile...</p>}
         <div className="followers">
 
           <UserCard user={this.state.user}></UserCard>
-
           {this.state.followers.filter((user) => {
             return user.login.toLowerCase().includes(this.state.userText.toLowerCase());
           }).map((user) => <UserCard user={user} key={user.id}></UserCard>)}
